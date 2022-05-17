@@ -1,18 +1,13 @@
 #pragma once
-#include <string>
+#import <string>
 
-class Conta
+struct Conta
 {
-private:
     std::string numero;
-    std::string nomeTitular;
     std::string cpfTitular;
+    std::string nomeTitular;
     float saldo;
 
-public:
-    Conta(std::string numero, std::string nomeTitular, std::string cpfTitular);
-    void sacar(float valorASacar);
-    void depositar(float valorADepositar);
-    float recuperaSaldo() const;
-    void definirNomeTitular(std::string nome);
+    void sacar(float valorAsacar);
+    void depositar(float valorADespositar);
 };
