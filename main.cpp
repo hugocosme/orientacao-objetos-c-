@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include "Conta.hpp"
+#include "Titular.hpp"
+#include "Cpf.hpp"
 
 using namespace std;
 
@@ -11,11 +13,22 @@ void ExibeSaldo(const Conta& conta)
 
 int main()
 {
-    Conta umaConta("123456", "Vinicius", "123.456.789-10");
+    Titular titular(Cpf("123.456.789-10"), "Vinicius");
+    
+    Conta umaConta("123456", titular);
     umaConta.depositar(500);
     umaConta.sacar(200);
 
-    cout << "Uma conta: " << umaConta.recuperaSaldo() << endl;
+    ExibeSaldo(umaConta);
+
+    Titular outro(Cpf("098.765.432-10"), "Dias");
+    Conta umaOutraConta("654321", titular);
+    umaOutraConta.depositar(300);
+    umaOutraConta.sacar(50);
+
+    ExibeSaldo(umaOutraConta);
+
+    cout << "Número de contas: " << Conta::recuperaNumeroDeContas() << endl;
 
     return 0;
 }
